@@ -12,25 +12,27 @@ class VetorOrdenado:
                 print(i, ' - ', self.valores[i])
 
     def insere(self, valor):
+        if self.ultima_posicao == self.capacidade -1:
+            print("Capacidade maxima atingida")
+        else:
+            for i in range(self.ultima_posicao + 1):
+                if valor == self.valores[i]:
+                    return 
+            posicao = 0
+            for i in range(self.ultima_posicao + 1):
+                posicao = i
+                if self.valores[i] > valor:
+                    break
+                if i == self.ultima_posicao:
+                    posicao = i + 1
 
-        for i in range(self.ultima_posicao + 1):
-            if valor == self.valores[i]:
-                return 
-        posicao = 0
-        for i in range(self.ultima_posicao + 1):
-            posicao = i
-            if self.valores[i] > valor:
-                break
-            if i == self.ultima_posicao:
-                posicao = i + 1
-
-        x = self.ultima_posicao
-        while x >= posicao:
-            self.valores[x + 1] = self.valores[x]
-            x = x - 1
-        
-        self.valores[posicao] = valor
-        self.ultima_posicao = self.ultima_posicao + 1
+            x = self.ultima_posicao
+            while x >= posicao:
+                self.valores[x + 1] = self.valores[x]
+                x = x - 1
+            
+            self.valores[posicao] = valor
+            self.ultima_posicao = self.ultima_posicao + 1
 
     def pesquisa(self, valor):
         for i in range(self.ultima_posicao + 1):
@@ -53,11 +55,12 @@ print()
 
 vetor.insere(4)
 vetor.insere(2)
-vetor.insere(2)
 vetor.insere(5)
 vetor.insere(6)
 vetor.insere(7)
 vetor.insere(4)
-vetor.insere(1)
+vetor.insere(3)
+vetor.insere(8)
+vetor.insere(9)
 vetor.insere(2)
 vetor.imprime()
